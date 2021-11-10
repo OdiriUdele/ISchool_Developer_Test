@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Options\LessonsAchievementAttributes;
 use App\Options\CommentAchievementAttributes;
 use App\Models\User;
+use App\Models\UserAchievements;
 
 class UserAchievementsFactory extends Factory
 {
@@ -14,7 +15,7 @@ class UserAchievementsFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = UserAchievements::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +24,7 @@ class UserAchievementsFactory extends Factory
      */
     public function definition()
     {
-        $type = $this->faker->randomElement(CommentAchievementAttributes::ACHIEVEMENT_TYPE); 
+        $type = CommentAchievementAttributes::ACHIEVEMENT_TYPE; 
         $name = $this->faker->randomElement(CommentAchievementAttributes::$title);
 
         return [
@@ -38,21 +39,21 @@ class UserAchievementsFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function schedule(string $type = null)
+    public function type(string $type = null)
     {
         return $this->state(function () use ($type) {
 
             switch ($type) {
                 case 'Comment':
-                    $type = $this->faker->randomElement(CommentAchievementAttributes::ACHIEVEMENT_TYPE); 
+                    $type = CommentAchievementAttributes::ACHIEVEMENT_TYPE; 
                     $name = $this->faker->randomElement(CommentAchievementAttributes::$title);
                     break;
-                case 'LESSON':
-                    $type = $this->faker->randomElement(LessonsAchievementAttributes::ACHIEVEMENT_TYPE); 
+                case 'lesson':
+                    $type = LessonsAchievementAttributes::ACHIEVEMENT_TYPE; 
                     $name = $this->faker->randomElement(LessonsAchievementAttributes::$title);
                     break;
                 default:
-                    $type = $this->faker->randomElement(CommentAchievementAttributes::ACHIEVEMENT_TYPE); 
+                    $type = CommentAchievementAttributes::ACHIEVEMENT_TYPE; 
                     $name = $this->faker->randomElement(CommentAchievementAttributes::$title);
             }
 

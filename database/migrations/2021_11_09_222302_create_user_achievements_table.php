@@ -15,9 +15,9 @@ class CreateUserAchievementsTable extends Migration
     {
         Schema::create('user_achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->string('achievement_type');
-            $table->string('achivement_name');
+            $table->string('achievement_name');
             $table->timestamps();
         });
     }
