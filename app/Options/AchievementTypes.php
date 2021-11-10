@@ -2,6 +2,9 @@
 
 namespace App\Options;
 
+use App\Options\CommentAchievementAttributes;
+use App\Options\LessonsAchievementAttributes;
+
 class AchievementTypes
 {  
     public const COMMENT  = 'Comment';
@@ -14,9 +17,9 @@ class AchievementTypes
         self::LESSON   => 'Lesson',
     ];
 
-    public static $class = [
-        self::COMMENT  => 'CommentAchievementAttributes',
-        self::LESSON   => 'LessonsAchievementAttributes',
+    public static $type = [
+        self::COMMENT  =>  'Comment',
+        self::LESSON   =>  'Lesson',
     ];
 
 }

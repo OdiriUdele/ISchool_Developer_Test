@@ -34,4 +34,11 @@ class LessonsAchievementAttributes
         self::FIFTY_LESSONS_WATCHED        => '50 Lessons Watched',
     ];
 
+    public static $next_available = [
+        self::FIRST_LESSON_WATCHED        => self::FIVE_LESSONS_WATCHED,
+        self::FIVE_LESSONS_WATCHED        => self::TEN_LESSONS_WATCHED,
+        self::TEN_LESSONS_WATCHED         => self::TWENTY_FIVE_LESSONS_WATCHED,
+        self::TWENTY_FIVE_LESSONS_WATCHED => self::FIFTY_LESSONS_WATCHED
+    ];
+
 }

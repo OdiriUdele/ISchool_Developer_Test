@@ -7,6 +7,7 @@ use App\Models\UserAchievements;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Options\AchievementBadgesAttributes;
 
 class User extends Authenticatable
 {
@@ -74,4 +75,48 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Lesson::class)->wherePivot('watched', true);
     }
+
+    /**
+     * The next badge a user can get.
+     */
+    public function getNextBadgeAttribute() 
+    {
+        $badge = $this->badge;
+        $badge_attribute = array_flip(AchievementBadgesAttributes::$title);
+        $current_badge = $badge_attribute[$badge];
+        $next_available = null;
+
+        if (isset(AchievementBadgesAttributes::$next_available[$current_badge])) {
+            $attrib = AchievementBadgesAttributes::$next_available[$current_badge];
+            $next_available = AchievementBadgesAttributes::$title[$attrib];
+        }
+
+        return $next_available;
+    }
+
+     /**
+     * The number of achievements needed till next badge.
+     */
+    public function getCountToNextBadgeAttribute() 
+    {
+        $next_badge = $this->next_badge;
+
+        $count = 0;
+
+        if ($next_badge != null) {
+
+            $badge_attribute = array_flip(AchievementBadgesAttributes::$title);
+
+            $badge = $badge_attribute[$next_badge];
+    
+            if (isset(AchievementBadgesAttributes::$count[$badge])) {
+                $count = AchievementBadgesAttributes::$count[$badge];
+                $count =  $count - count($this->achievements);
+            }
+
+        }
+
+        return $count;
+    }
+
 }
