@@ -29,7 +29,7 @@ class ProcessUserCommentOperationJob implements ShouldQueue
     public $user;
 
     /**
-     * @var User
+     * @var String
     */
     public $achievement_name;
 
