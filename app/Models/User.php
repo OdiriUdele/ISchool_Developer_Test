@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     /**
      * The comments that belong to the user.
-     */
+    */
     public function comments()
     {
         return $this->hasMany(Comment::class);

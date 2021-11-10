@@ -31,7 +31,7 @@ class ProcessUserCommentOperationJob implements ShouldQueue
     /**
      * @var User
     */
-    public $achievement_ame;
+    public $achievement_name;
 
     /**
      * Create a new job instance.
@@ -61,9 +61,9 @@ class ProcessUserCommentOperationJob implements ShouldQueue
             $title_attribute = CommentAchievementAttributesCount::$choices[$number_of_comments];
 
             //fetch achievement title
-            $this->achievement_ame = CommentAchievementAttributes::$title[$title_attribute];
+            $this->achievement_name = CommentAchievementAttributes::$title[$title_attribute];
 
-            AchievementUnlocked::dispatch($this->achievement_ame, $this->user);
+            AchievementUnlocked::dispatch($this->achievement_name, $this->user);
 
         } else {
             return false;
