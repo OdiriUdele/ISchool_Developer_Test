@@ -4,13 +4,13 @@ namespace App\Options;
 
 class AchievementBadgesAttributes
 {
-    public const BEGINNER = 'Beginner';
+    public const BEGINNER = 'BEGINNER';
 
-    public const INTERMEDIATE = 'Intermediate';
+    public const INTERMEDIATE = 'INTERMEDIATE';
 
-    public const ADVANCED = 'Advanced';
+    public const ADVANCED = 'ADVANCED';
 
-    public const MASTER = 'Master';
+    public const MASTER = 'MASTER';
 
     public static $count = [
         self::BEGINNER     => 0,

@@ -4,8 +4,12 @@ namespace App\Providers;
 
 use App\Events\LessonWatched;
 use App\Events\CommentWritten;
+use App\Events\AchievementUnlocked;
+use App\Events\BadgeUnlocked;
 use App\Listeners\LessonWatchedListener;
 use App\Listeners\CommentWrittenListener;
+use App\Models\UserAchievements;
+use App\Observers\AchievementUnlockedObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -26,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         AchievementUnlocked::class => [
             //
         ],
+        BadgeUnlocked::class => [
+            //
+        ],
     ];
 
     /**
@@ -35,6 +42,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        parent::boot();
+
+        UserAchievements::observe(AchievementUnlockedObserver::class);
     }
 }

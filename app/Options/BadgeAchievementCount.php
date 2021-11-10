@@ -12,10 +12,10 @@ class BadgeAchievementCount
 
     public const MASTER = 10;
 
-    protected static $choices = [
-        0  => self::BEGINNER,
-        4  => self::INTERMEDIATE,
-        8  => self::ADVANCED,
-        10 => self::MASTER,
+    public static $choices = [
+        0  => 'BEGINNER',
+        4  => 'INTERMEDIATE',
+        8  => 'ADVANCED',
+        10 => 'MASTER',
     ];
 }
