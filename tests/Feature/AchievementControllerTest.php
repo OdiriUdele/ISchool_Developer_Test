@@ -127,10 +127,9 @@ class AchievementControllerTest extends TestCase
      */
     public function test_the_route_returns_remaining_to_unlock_next_badge_as_4()
     {
-        // $user = User::factory()->badge('Intermediate')->create();
-        $user = User::find(107);
-        // $user_achievements = UserAchievements::factory(4)
-        //                     ->for($user)->create();
+        $user = User::factory()->badge('Intermediate')->create();
+        $user_achievements = UserAchievements::factory(4)
+                            ->for($user)->create();
         
         $response = $this->get("/users/{$user->id}/achievements");
 
